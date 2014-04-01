@@ -1,7 +1,8 @@
 {
     "name": "aamant/email-confirmation",
     "description": "Email confirmation for Laravel 4",
-    "tags": ["laravel","email","confirmation"]
+    "keywords": ["laravel","email","confirmation"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Arnaud Amant",
