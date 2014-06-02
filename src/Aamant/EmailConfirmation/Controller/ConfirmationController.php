@@ -30,7 +30,7 @@ class ConfirmationController extends \BaseController
 
 		switch ($response) {
 			case $proccess::CONFIRMED:
-				return \Redirect::to('/')->with('success', \Lang::get('email-confirmation::messages.confirmed'));
+				return \Redirect::to(\Config::get('email-confirmation::redirect-after-confirm'))->with('success', \Lang::get('email-confirmation::messages.confirmed'));
 
 			case $proccess::EMAIL_NOT_FOUND:
 			case $proccess::TOKEN_NOT_FOUND:
