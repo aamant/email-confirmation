@@ -76,7 +76,7 @@ class EmailConfirmation
 				\DB::table($this->table)->where('token', '=', $token)->delete();
 
 				if (\Config::get('email-confirmation::autoconnect')){
-					Auth::login($user);
+					\Auth::login($user);
 				}
 
 				return static::CONFIRMED;
