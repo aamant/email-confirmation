@@ -38,7 +38,7 @@ class EmailConfirmation
 				$m->to($user->email, $user->firstname);
 				$m->subject(\Lang::get('email-confirmation::email.title'));
 			});
-		
+
 			return static::SENDING_OK;
 		}
 		catch (\Swift_SwiftException $e) {
@@ -66,20 +66,24 @@ class EmailConfirmation
 				->first();
 
 			if ($row) {
-				
+
 				$user = \User::where('email', '=', $row->email)->first();
 				if(!$user){
 					return static::EMAIL_NOT_FOUND;
 				}
 				$user->update(array('confirmed' => 1));
-				
+
 				\DB::table($this->table)->where('token', '=', $token)->delete();
-				
+
+				if (\Config::get('email-confirmation::autoconnect')){
+					Auth::login($user);
+				}
+
 				return static::CONFIRMED;
 			}
 
 			return static::TOKEN_NOT_FOUND;
-		}			
+		}
 		catch (\PDOException $e) {
 			return static::ERROR_DB;
 		}

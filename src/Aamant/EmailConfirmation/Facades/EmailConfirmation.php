@@ -1,4 +1,4 @@
-<?php namespace Aamant\EmailConfirmation\Facade;
+<?php namespace Aamant\EmailConfirmation\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

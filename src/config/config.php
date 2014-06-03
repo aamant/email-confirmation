@@ -1,5 +1,6 @@
 <?php
 
 return [
-	'redirect-after-confirm' => '/',
+	'redirect-after-confirm' 	=> '/',
+	'autoconnect'				=> false
 ];
